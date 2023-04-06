@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Episode 1",
+    "description": "This is the first episode.",
+    "listened": false
+  },
+  {
+    "id": 2,
+    "title": "Episode 2",
+    "description": "This is the second episode.",
+    "listened": false
+  },
+  {
+    "id": 3,
+    "title": "Episode 3",
+    "description": "This is the third episode.",
+    "listened": false
+  }
+]

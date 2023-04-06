@@ -1,14 +1,28 @@
-import Title from '@/components/Title'
+import React from 'react'
+import { PageProps } from 'gatsby'
+import EpisodesList from '../components/EpisodesList'
+import { Episode } from '../types'
+const episodesData = require('../data/episodes.json')
 
-export default function Home() {
+type Props = PageProps & {}
+
+const IndexPage: React.FC<Props> = () => {
+  const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
+
+  const handleEpisodeChange = (id: number, listened: boolean) => {
+    setEpisodes(
+      episodes.map((episode) =>
+        episode.id === id ? { ...episode, listened } : episode,
+      ),
+    )
+  }
+
   return (
-    <main>
-      <Title>Hello TypeScript!</Title>
-      <p>A TypeScript starter for Gatsby. Great for advanced users.</p>
-      <p>
-        Follow me on Twitter (
-        <a href="https://twitter.com/jpedroschmitz">@jpedroschmitz</a>)
-      </p>
-    </main>
+    <div>
+      <h1>My SSR Website</h1>
+      <EpisodesList episodes={episodes} onEpisodeChange={handleEpisodeChange} />
+    </div>
   )
 }
+
+export default IndexPage
