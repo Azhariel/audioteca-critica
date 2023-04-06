@@ -2,11 +2,20 @@ import React from 'react'
 import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
+import { FontStyles } from '../styles'
 const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
 
-export const Head = () => <title>Audioteca Crítica - Guia de Episódios</title>
+export const Head = () => {
+  return (
+    <>
+      <title>Audioteca Crítica - Guia de Episódios</title>
+      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <FontStyles />
+    </>
+  )
+}
 
 const IndexPage: React.FC<Props> = () => {
   const percListenedCookieValue =
@@ -75,7 +84,11 @@ const IndexPage: React.FC<Props> = () => {
   return (
     <div>
       <h1>Audioteca Crítica - Guia de Episódios</h1>
-      <EpisodesList episodes={episodes} onEpisodeChange={handleEpisodeChange} />
+      <EpisodesList
+        episodes={episodes}
+        onEpisodeChange={handleEpisodeChange}
+        percentageListened={percentageListened}
+      />
     </div>
   )
 }

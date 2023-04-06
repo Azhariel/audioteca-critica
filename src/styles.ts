@@ -1,4 +1,13 @@
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
+import '@fontsource/roboto/300.css'
+import '@fontsource/roboto/400.css'
+import '@fontsource/roboto/500.css'
+import '@fontsource/roboto/700.css'
+
+export const FontStyles = createGlobalStyle`
+  * {
+    font-family: "Roboto" !important;
+    }`
 
 export const Container = styled.div`
   max-width: 800px;
