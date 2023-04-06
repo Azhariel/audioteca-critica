@@ -27,7 +27,7 @@ const IndexPage: React.FC<Props> = () => {
 
   return (
     <div>
-      <h1>My SSR Website</h1>
+      <h1>Audioteca Crítica - Guia de Episódios</h1>
       <EpisodesList episodes={episodes} onEpisodeChange={handleEpisodeChange} />
     </div>
   )
