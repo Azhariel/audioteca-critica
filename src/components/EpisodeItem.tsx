@@ -1,5 +1,6 @@
 import React from 'react'
 import { Episode } from '../types'
+import cookieHandler from './cookieHandler'
 
 type Props = {
   episode: Episode
@@ -8,17 +9,11 @@ type Props = {
 
 const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.checked)
     onEpisodeChange(episode.id, event.target.checked)
   }
 
   const hasListenedToEpisode = (id: number): boolean => {
-    const cookieName = `episode_${id}`
-    const episodeRegex = new RegExp(`${cookieName}\\b`)
-    const cookieValue = document.cookie
-      .split('; ')
-      .find((cookie) => cookie.match(episodeRegex))
-      ?.split('=')[1]
+    const cookieValue = cookieHandler(`episode_${id}`)
     return cookieValue === '1'
   }
 

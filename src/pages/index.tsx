@@ -3,6 +3,7 @@ import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
 import { FontStyles } from '../styles'
+import cookieHandler from '@/components/cookieHandler'
 const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
@@ -19,12 +20,7 @@ export const Head = () => {
 
 const IndexPage: React.FC<Props> = () => {
   const percListenedCookieValue =
-    Number(
-      document.cookie
-        .split('; ')
-        .find((cookie) => cookie.startsWith('percentage_listened'))
-        ?.split('=')[1],
-    ) || 0
+    Number(cookieHandler('percentage_listened')) || 0
 
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
   const [percentageListened, setPercentageListened] = React.useState<number>(
@@ -32,15 +28,13 @@ const IndexPage: React.FC<Props> = () => {
   )
 
   // Create cookie for percentage_listened if it doesn't exist
-  if (!document.cookie.includes('percentage_listened')) {
-    document.cookie = 'percentage_listened='
-  }
+  // if (!cookieHandler('percentage_listened')) {
+  //   cookieHandler('percentage_listened')
+  // }
 
   episodesData.forEach((episode: Episode) => {
     const cookieName = `episode_${episode.id}`
-    if (!document.cookie.includes(cookieName)) {
-      document.cookie = `${cookieName}=`
-    }
+    cookieHandler(cookieName)
   })
 
   const handleEpisodeChange = (id: number, listened: boolean) => {
@@ -54,19 +48,13 @@ const IndexPage: React.FC<Props> = () => {
     setEpisodes(updatedEpisodes)
 
     // Save episode status in a cookie
-    document.cookie = `episode_${id}=${listened ? 1 : 0}`
+    cookieHandler(`episode_${id}`, listened ? '1' : '0')
 
     // Calculate percentage of episodes listened to
     const totalEpisodes = episodes.length
-    const listenedEpisodes = updatedEpisodes.filter((episode) => {
-      const episodeRegex = new RegExp(`episode_${episode.id}\\b`)
-      return (
-        document.cookie
-          .split('; ')
-          .find((cookie) => cookie.match(episodeRegex))
-          ?.split('=')[1] === '1'
-      )
-    }).length
+    const listenedEpisodes = updatedEpisodes.filter(
+      (episode) => cookieHandler(`episode_${episode.id}`) === '1',
+    ).length
     const percentageListened = Math.round(
       (listenedEpisodes / totalEpisodes) * 100,
     )
@@ -74,11 +62,7 @@ const IndexPage: React.FC<Props> = () => {
     setPercentageListened(percentageListened)
 
     // Create cookie for tracking percentage listened
-    const cookieName = 'percentage_listened'
-    const cookieValue = `${percentageListened}`
-    if (document.cookie.includes(cookieName)) {
-      document.cookie = `${cookieName}=${cookieValue}`
-    }
+    cookieHandler('percentage_listened', percentageListened.toString())
   }
 
   return (
