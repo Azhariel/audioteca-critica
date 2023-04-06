@@ -19,7 +19,7 @@ const EpisodesList: React.FC<Props> = ({
     <Container>
       <Title>Episódios</Title>
       <LinearProgress variant="determinate" value={percentageListened} />
-      <ul>
+      <ul style={{ padding: 0 }}>
         {episodes.map((episode) => (
           <ListItem key={episode.id}>
             <EpisodeItem episode={episode} onEpisodeChange={onEpisodeChange} />

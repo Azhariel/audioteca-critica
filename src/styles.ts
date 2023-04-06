@@ -26,6 +26,7 @@ export const ListItem = styled.li`
   padding: 16px;
   background-color: #f2f2f2;
   border-radius: 8px;
+  list-style-type: none;
 
   h2 {
     font-size: 24px;
