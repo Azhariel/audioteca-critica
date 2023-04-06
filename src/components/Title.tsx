@@ -1,9 +1,9 @@
-import { ReactNode } from 'react';
+import { ReactNode } from 'react'
 
 type TitleProps = {
-  children: ReactNode;
-};
+  children: ReactNode
+}
 
 export default function Title({ children }: TitleProps) {
-  return <h1>{children}</h1>;
+  return <h1>{children}</h1>
 }

@@ -1,5 +1,5 @@
-import type { GatsbyNode } from 'gatsby';
-import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import type { GatsbyNode } from 'gatsby'
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
 export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
   actions,
@@ -8,5 +8,5 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({
     resolve: {
       plugins: [new TsconfigPathsPlugin()],
     },
-  });
-};
+  })
+}

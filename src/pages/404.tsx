@@ -3,5 +3,5 @@ export default function NotFound() {
     <main>
       <p>Sorry, page not found!</p>
     </main>
-  );
+  )
 }
