@@ -1,6 +1,7 @@
 import React from 'react'
 import EpisodeItem from './EpisodeItem'
 import { Episode } from '../types'
+import { Container, Title, ListItem } from '../styles'
 
 type Props = {
   episodes: Episode[]
@@ -9,15 +10,16 @@ type Props = {
 
 const EpisodesList: React.FC<Props> = ({ episodes, onEpisodeChange }) => {
   return (
-    <ul>
-      {episodes.map((episode) => (
-        <EpisodeItem
-          key={episode.id}
-          episode={episode}
-          onEpisodeChange={() => onEpisodeChange(episode.id, episode.listened)}
-        />
-      ))}
-    </ul>
+    <Container>
+      <Title>Episódios</Title>
+      <ul>
+        {episodes.map((episode) => (
+          <ListItem key={episode.id}>
+            <EpisodeItem episode={episode} onEpisodeChange={onEpisodeChange} />
+          </ListItem>
+        ))}
+      </ul>
+    </Container>
   )
 }
 
