@@ -31,8 +31,6 @@ const IndexPage: React.FC<Props> = () => {
     percListenedCookieValue,
   )
 
-  console.log('percentageListened', percentageListened)
-
   // Create cookie for percentage_listened if it doesn't exist
   if (!document.cookie.includes('percentage_listened')) {
     document.cookie = 'percentage_listened='
@@ -60,13 +58,15 @@ const IndexPage: React.FC<Props> = () => {
 
     // Calculate percentage of episodes listened to
     const totalEpisodes = episodes.length
-    const listenedEpisodes = updatedEpisodes.filter(
-      (episode) =>
+    const listenedEpisodes = updatedEpisodes.filter((episode) => {
+      const episodeRegex = new RegExp(`episode_${episode.id}\\b`)
+      return (
         document.cookie
           .split('; ')
-          .find((cookie) => cookie.startsWith(`episode_${episode.id}`))
-          ?.split('=')[1] === '1',
-    ).length
+          .find((cookie) => cookie.match(episodeRegex))
+          ?.split('=')[1] === '1'
+      )
+    }).length
     const percentageListened = Math.round(
       (listenedEpisodes / totalEpisodes) * 100,
     )

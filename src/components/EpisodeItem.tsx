@@ -8,16 +8,17 @@ type Props = {
 
 const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.checked)
     onEpisodeChange(episode.id, event.target.checked)
   }
 
   const hasListenedToEpisode = (id: number): boolean => {
     const cookieName = `episode_${id}`
+    const episodeRegex = new RegExp(`${cookieName}\\b`)
     const cookieValue = document.cookie
       .split('; ')
-      .find((cookie) => cookie.startsWith(cookieName))
+      .find((cookie) => cookie.match(episodeRegex))
       ?.split('=')[1]
-
     return cookieValue === '1'
   }
 
