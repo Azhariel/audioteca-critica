@@ -6,15 +6,23 @@ const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
 
+export const Head = () => <title>Audioteca Crítica - Guia de Episódios</title>
+
 const IndexPage: React.FC<Props> = () => {
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
 
   const handleEpisodeChange = (id: number, listened: boolean) => {
-    setEpisodes(
-      episodes.map((episode) =>
-        episode.id === id ? { ...episode, listened } : episode,
-      ),
-    )
+    const updatedEpisodes = episodes.map((episode) => {
+      if (episode.id === id) {
+        return { ...episode, listened }
+      }
+      return episode
+    })
+
+    setEpisodes(updatedEpisodes)
+
+    // Save episode status in a cookie
+    document.cookie = `episode_${id}=${listened ? 1 : 0}`
   }
 
   return (
