@@ -1,20 +1,261 @@
 [
   {
     "id": 1,
-    "title": "Episode 1",
-    "description": "This is the first episode.",
-    "listened": false
+    "title": "Chamamento ao Povo Brasileiro - Carlos Marighella (1968)",
+    "description": "",
+    "listened": false,
+    "image": ""
   },
   {
     "id": 2,
-    "title": "Episode 2",
-    "description": "This is the second episode.",
-    "listened": false
+    "title": "A Propósito dos Métodos de Direção - Mao Zedong (1943)",
+    "description": "",
+    "listened": false,
+    "image": ""
   },
   {
     "id": 3,
-    "title": "Episode 3",
-    "description": "This is the third episode.",
-    "listened": false
+    "title": "Centralismo Democrático: “Liberdade para Criticar e Unidade de Ação” - Lenin (1906)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 4,
+    "title": "Dia da Mulher - Alexandra Kollontai (1913)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "title": "Fundamentos do Leninismo - Josef Stalin (1924) - Parte 3",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 6,
+    "title": "Fundamentos do Leninismo - Josef Stalin (1924) - Parte 2",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 7,
+    "title": "Fundamentos do Leninismo - Josef Stalin (1924) - Parte 1",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 8,
+    "title": "Racismo e Cultura - Frantz Fanon",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 9,
+    "title": "O Comunismo e a Família - Alexandra Kollontai (1920)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 10,
+    "title": "Do Socialismo Utópico ao Socialismo Científico - Friederich Engels (1880)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 11,
+    "title": "Lélia Gonzales - Racismo e Sexismo na Cultura Brasileira (1980)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 12,
+    "title": "Da Moralidade Revolucionária - Ho Chi Mihn (1958)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 13,
+    "title": "Especial Semana Temática - Che Guevara",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 14,
+    "title": "O Racismo como Arma Ideológica de Dominação - Clóvis Moura (1994)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 15,
+    "title": "Gays e Lésbicas no Movimento Revolucionário - Partido Comunista das Filipinas (2014)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 16,
+    "title": "Direito Absoluto Sobre Nossos Corpos - Lohanna Berkins - 2000",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 17,
+    "title": "Precisamos de camaradagem - Jodi Dean",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 18,
+    "title": "Enver Hoxha - A literatura e a arte devem temperar as massas com consciência de classe para a construção do socialismo (1965)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 19,
+    "title": "Um Catedrático Liberal Fala de Igualdade - Vladimir Lenin (1914)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 20,
+    "title": "Poder em qualquer lugar onde haja povo - Fred Hampton (1969)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 21,
+    "title": "Fascismo - Clara Zetkin (1923)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 22,
+    "title": "Luta Interna e Dialética - Carlos Marighella (1966)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 23,
+    "title": "Sobre o Caráter Ideológico dos Mexericos - Enver Hoxha (1969)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 24,
+    "title": "Sobre as Correntes Filosóficas Dentro do Movimento Feminista - Anuradha Gandhi - (Episódio 3) - 2006",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 25,
+    "title": "Sobre as Correntes Filosóficas Dentro do Movimento Feminista - Anuradha Gandhi - (Episódio 2) - 2006",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 26,
+    "title": "Sobre as Correntes Filosóficas Dentro do Movimento Feminista - Anuradha Ghandi - 2006 (Episódio 1)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 27,
+    "title": "Por Onde Começar - Vladimir Lenin (1901)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 28,
+    "title": "Princípios básicos do comunismo - Friedrich Engels (1847)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 29,
+    "title": "O Manifesto do Partido Comunista - Karl Marx e Friedrich Engels (1848)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 30,
+    "title": "Os fundamentos Sociais da Questão Feminina - Alexandra Kollontai (1907)",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 31,
+    "title": "Contra o Liberalismo - Mao Zedong",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 32,
+    "title": "Friedrich Engels - Sobre a Questão da Moradia - Capítulo 1",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 33,
+    "title": "Podcast História Pública - Maoísmo",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 34,
+    "title": "Nosso Direito de Sermos Marxistas Leninistas - Fidel Castro",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 35,
+    "title": "Ecletismo e Marxismo - Carlos Marighella",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 36,
+    "title": "Sobre a Autoridade - Friedrich Engels",
+    "description": "",
+    "listened": false,
+    "image": ""
+  },
+  {
+    "id": 37,
+    "title": "As Três Fontes e as Três partes Componentes do Marxismo - Vladmir Lenin (1913)",
+    "description": "",
+    "listened": false,
+    "image": ""
   }
 ]
