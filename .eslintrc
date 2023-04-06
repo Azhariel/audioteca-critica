@@ -42,7 +42,7 @@
     "quotes": "off",
     "@typescript-eslint/quotes": [
       2,
-      "backtick",
+      "single",
       {
         "avoidEscape": true
       }
