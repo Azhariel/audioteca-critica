@@ -22,7 +22,7 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   }
 
   return (
-    <li>
+    <>
       <h2>{episode.title}</h2>
       <p>{episode.description}</p>
       <input
@@ -30,7 +30,7 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
         checked={hasListenedToEpisode(episode.id)}
         onChange={handleChange}
       />
-    </li>
+    </>
   )
 }
 
