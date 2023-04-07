@@ -10,7 +10,6 @@ const ThemeToggler = ({
   handleToggleTheme,
   currentTheme,
 }: ThemeTogglerProps): ReactElement | null => {
-  console.log(`currentTheme: ${currentTheme}`)
   if (!currentTheme) {
     return null
   }

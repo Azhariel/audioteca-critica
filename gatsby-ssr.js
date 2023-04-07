@@ -24,9 +24,9 @@ const MagicScriptTag = () => {
   const codeToRunOnClient = `(function() {
   // Update the current theme to either 'light' or 'dark'
   function setTheme(theme) {
+    console.log('theme within setTheme', theme)
     window.__theme = theme;
     // TODO: do other logic to update theme here
-    console.log('Theme updated:', theme);
 
     if (theme === 'dark') {
       document.documentElement.className = 'dark';
@@ -57,6 +57,8 @@ const MagicScriptTag = () => {
   // 1. Use the theme from localStorage, if any
   // 2. Use the OS theme, if any
   // 3. Default to light
+  console.log('preferredTheme', preferredTheme)
+  console.log('darkQuery', darkQuery)
   setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
 })();`
   // eslint-disable-next-line react/no-danger
