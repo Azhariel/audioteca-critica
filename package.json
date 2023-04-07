@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-ts",
-  "description": "A TypeScript starter for Gatsby that includes all you need to build amazing projects",
+  "name": "audioteca-critica",
+  "description": "Website to track listened episodes of the podcast Audioteca Crítica",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (https://joaopedro.dev)",
+  "author": "Azhariel <azhariel@gmail.com> (https://github.com/azhariel) . Starter template by João Pedro Schmitz <hey@joaopedro.dev> (https://joaopedro.dev)",
   "license": "MIT",
   "keywords": [
     "gatsby",
@@ -38,8 +38,10 @@
     "@mui/icons-material": "5.11.16",
     "@mui/material": "5.11.16",
     "@mui/styled-engine-sc": "5.11.11",
+    "babel-plugin-styled-components": "2.1.1",
     "gatsby": "5.8.1",
     "gatsby-plugin-pnpm": "1.2.10",
+    "gatsby-plugin-styled-components": "6.8.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "5.3.9",

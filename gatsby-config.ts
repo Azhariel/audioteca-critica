@@ -6,7 +6,7 @@ const config: GatsbyConfig = {
   flags: {
     DEV_SSR: true,
   },
-  plugins: ['gatsby-plugin-pnpm'],
+  plugins: ['gatsby-plugin-pnpm', 'gatsby-plugin-styled-components'],
   jsxRuntime: 'automatic',
 }
 
