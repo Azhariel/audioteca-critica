@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
@@ -22,7 +22,7 @@ const IndexPage: React.FC<Props> = () => {
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
   const [percentageListened, setPercentageListened] = React.useState<number>(0)
 
-  const episodePercentage = () => {
+  const episodePercentage = useCallback(() => {
     // Calculate percentage of episodes listened to
     const totalEpisodes = episodes.length
     const listenedEpisodes = episodes.filter(
@@ -36,12 +36,12 @@ const IndexPage: React.FC<Props> = () => {
 
     // Create cookie for tracking percentage listened
     storageHandler('percentage_listened', percentageListened.toString())
-  }
+  }, [episodes])
 
   useEffect(() => {
     episodePercentage()
     setPercentageListened(Number(storageHandler('percentage_listened')))
-  }, [])
+  }, [episodePercentage])
 
   episodesData.forEach((episode: Episode) => {
     const cookieName = `episode_${episode.id}`
