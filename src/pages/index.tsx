@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
 import { FontStyles } from '../styles'
-import cookieHandler from '@/components/cookieHandler'
+import storageHandler from '@/utils/storageHandler'
 const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
@@ -19,22 +19,33 @@ export const Head = () => {
 }
 
 const IndexPage: React.FC<Props> = () => {
-  const percListenedCookieValue =
-    Number(cookieHandler('percentage_listened')) || 0
-
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
-  const [percentageListened, setPercentageListened] = React.useState<number>(
-    percListenedCookieValue,
-  )
+  const [percentageListened, setPercentageListened] = React.useState<number>(0)
 
-  // Create cookie for percentage_listened if it doesn't exist
-  // if (!cookieHandler('percentage_listened')) {
-  //   cookieHandler('percentage_listened')
-  // }
+  const episodePercentage = () => {
+    // Calculate percentage of episodes listened to
+    const totalEpisodes = episodes.length
+    const listenedEpisodes = episodes.filter(
+      (episode) => storageHandler(`episode_${episode.id}`) === '1',
+    ).length
+    const percentageListened = Math.round(
+      (listenedEpisodes / totalEpisodes) * 100,
+    )
+
+    setPercentageListened(percentageListened)
+
+    // Create cookie for tracking percentage listened
+    storageHandler('percentage_listened', percentageListened.toString())
+  }
+
+  useEffect(() => {
+    episodePercentage()
+    setPercentageListened(Number(storageHandler('percentage_listened')))
+  }, [])
 
   episodesData.forEach((episode: Episode) => {
     const cookieName = `episode_${episode.id}`
-    cookieHandler(cookieName)
+    storageHandler(cookieName)
   })
 
   const handleEpisodeChange = (id: number, listened: boolean) => {
@@ -48,21 +59,8 @@ const IndexPage: React.FC<Props> = () => {
     setEpisodes(updatedEpisodes)
 
     // Save episode status in a cookie
-    cookieHandler(`episode_${id}`, listened ? '1' : '0')
-
-    // Calculate percentage of episodes listened to
-    const totalEpisodes = episodes.length
-    const listenedEpisodes = updatedEpisodes.filter(
-      (episode) => cookieHandler(`episode_${episode.id}`) === '1',
-    ).length
-    const percentageListened = Math.round(
-      (listenedEpisodes / totalEpisodes) * 100,
-    )
-
-    setPercentageListened(percentageListened)
-
-    // Create cookie for tracking percentage listened
-    cookieHandler('percentage_listened', percentageListened.toString())
+    storageHandler(`episode_${id}`, listened ? '1' : '0')
+    episodePercentage()
   }
 
   return (

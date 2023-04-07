@@ -1,6 +1,6 @@
 import React from 'react'
 import { Episode } from '../types'
-import cookieHandler from './cookieHandler'
+import storageHandler from '../utils/storageHandler'
 
 type Props = {
   episode: Episode
@@ -13,7 +13,7 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   }
 
   const hasListenedToEpisode = (id: number): boolean => {
-    const cookieValue = cookieHandler(`episode_${id}`)
+    const cookieValue = storageHandler(`episode_${id}`)
     return cookieValue === '1'
   }
 
