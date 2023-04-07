@@ -20,9 +20,9 @@ export const darkTheme = {
 }
 
 export const StyledButton = styled.button`
-  background-color: ${({ theme }) => theme.body};
-  color: ${({ theme }) => theme.text};
-  border: 2px solid ${({ theme }) => theme.toggleBorder};
+  background-color: var(--color-body);
+  color: var(--color-text);
+  border: 2px solid var(--color-toggleBorder);
   font-size: 0.9rem;
   padding: 0.25rem 1rem;
   border-radius: 5px;
@@ -30,16 +30,49 @@ export const StyledButton = styled.button`
   cursor: pointer;
 `
 
+const colors = {
+  colorBody: '#fafafa',
+  colorContainerBackground: '#f2f2f2',
+  colorText: '#363537',
+  colorToggleBorder: '#FFF',
+  colorBackground: '#363537',
+  darkTheme: {
+    colorBody: '#363537',
+    colorContainerBackground: '#2b2b2b',
+    colorText: '#FAFAFA',
+    colorToggleBorder: '#6B8096',
+    colorBackground: '#999',
+  },
+}
+
 export const FontStyles = createGlobalStyle`
+    :root {
+    --color-body: ${colors.colorBody};
+    --color-containerBackground: ${colors.colorContainerBackground};
+    --color-text: ${colors.colorText};
+    --color-toggleBorder: ${colors.colorToggleBorder};
+    --color-background: ${colors.colorBackground};
+  }
+
+  :root.dark {
+    --color-body: ${colors.darkTheme.colorBody};
+    --color-containerBackground: ${colors.darkTheme.colorContainerBackground};
+    --color-text: ${colors.darkTheme.colorText};
+    --color-toggleBorder: ${colors.darkTheme.colorToggleBorder};
+    --color-background: ${colors.darkTheme.colorBackground};
+  }
+
   * {
     font-family: "Roboto" !important;
     }
 
     body {
-    background: ${({ theme }) => theme.body};
-    color: ${({ theme }) => theme.text};
+    background: var(--color-body);
+    color: var(--color-text);
     transition: all 0.50s linear;
-  }`
+  }
+
+`
 
 export const Container = styled.div`
   max-width: 800px;
@@ -56,7 +89,7 @@ export const Title = styled.h1`
 export const ListItem = styled.li`
   margin-bottom: 16px;
   padding: 16px;
-  background-color: ${({ theme }) => theme.containerBackground};
+  background-color: var(--color-containerBackground);
   border-radius: 8px;
   list-style-type: none;
 

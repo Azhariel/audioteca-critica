@@ -2,9 +2,8 @@ import React, { useCallback, useEffect } from 'react'
 import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
-import { FontStyles, lightTheme, darkTheme, StyledButton } from '../styles'
+import { FontStyles, StyledButton } from '../styles'
 import storageHandler from '@/utils/storageHandler'
-import { ThemeProvider } from 'styled-components'
 const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
@@ -22,11 +21,6 @@ const IndexPage: React.FC<Props> = () => {
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
   const [percentageListened, setPercentageListened] = React.useState<number>(0)
   const [theme, setTheme] = React.useState('light')
-  // console.log(theme)
-  // if (typeof document !== 'undefined')
-  //   console.log(
-  //     document.documentElement.style.getPropertyValue('--initial-color-mode'),
-  //   )
 
   useEffect(() => {
     const userTheme = storageHandler('theme')
@@ -37,6 +31,7 @@ const IndexPage: React.FC<Props> = () => {
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
+    document.documentElement.classList.toggle('dark')
     setTheme(newTheme)
     storageHandler('theme', newTheme)
   }
@@ -84,20 +79,18 @@ const IndexPage: React.FC<Props> = () => {
 
   return (
     <div>
-      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
-        <FontStyles />
-        <h1>Audioteca Crítica - Guia de Episódios</h1>
-        <StyledButton onClick={toggleTheme}>
-          {/* {theme === 'light' ? 'Apagar as luzes' : 'Acender as luzes'} */}
-          Toggle
-        </StyledButton>
-        <EpisodesList
-          theme={theme}
-          episodes={episodes}
-          onEpisodeChange={handleEpisodeChange}
-          percentageListened={percentageListened}
-        />
-      </ThemeProvider>
+      <FontStyles />
+
+      <h1>Audioteca Crítica - Guia de Episódios</h1>
+      <StyledButton onClick={toggleTheme}>
+        {theme === 'light' ? '🌛' : '🌞'}
+      </StyledButton>
+      <EpisodesList
+        theme={theme}
+        episodes={episodes}
+        onEpisodeChange={handleEpisodeChange}
+        percentageListened={percentageListened}
+      />
     </div>
   )
 }
