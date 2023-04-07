@@ -33,6 +33,7 @@ const MagicScriptTag = () => {
     } else {
       document.documentElement.className = '';
     }
+    localStorage.setItem('theme', theme);
   };
 
   // Save the user's explicit theme preference.
@@ -40,18 +41,16 @@ const MagicScriptTag = () => {
   // We'll need it later in this post.
   window.__setPreferredTheme = function(theme) {
     setTheme(theme);
-    try {
+
       localStorage.setItem('theme', theme);
-    } catch (e) {}
+
   };
 
   // Is there a Saved Theme Preference in localStorage?
-  let preferredTheme;
-  try {
-    preferredTheme = localStorage.getItem('theme');
-  } catch (e) {}
+  let preferredTheme = localStorage.getItem('theme');
 
   // Is there an Operating System Preference?
+
   let darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
   // PICK THE INITIAL THEME

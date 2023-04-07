@@ -2,8 +2,9 @@ import React, { useCallback, useEffect } from 'react'
 import { PageProps } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
-import { FontStyles, StyledButton } from '../styles'
+import { FontStyles } from '../styles'
 import storageHandler from '@/utils/storageHandler'
+import ThemeToggler from '@/components/ThemeToggler'
 const episodesData = require('../data/episodes.json')
 
 type Props = PageProps & {}
@@ -20,17 +21,25 @@ export const Head = () => {
 const IndexPage: React.FC<Props> = () => {
   const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
   const [percentageListened, setPercentageListened] = React.useState<number>(0)
-  const [theme, setTheme] = React.useState('light')
+  const [theme, setTheme] = React.useState('')
+
+  const isDarkMode = () => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark')
+    }
+    return false
+  }
 
   useEffect(() => {
     const userTheme = storageHandler('theme')
     if (userTheme) {
       setTheme(userTheme)
     }
-  }, [])
+  }, [theme])
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
+    const newTheme = isDarkMode() ? 'light' : 'dark'
+    console.log(`toggled theme to ${newTheme}`)
     document.documentElement.classList.toggle('dark')
     setTheme(newTheme)
     storageHandler('theme', newTheme)
@@ -82,9 +91,7 @@ const IndexPage: React.FC<Props> = () => {
       <FontStyles />
 
       <h1>Audioteca Crítica - Guia de Episódios</h1>
-      <StyledButton onClick={toggleTheme}>
-        {theme === 'light' ? '🌛' : '🌞'}
-      </StyledButton>
+      <ThemeToggler handleToggleTheme={toggleTheme} currentTheme={theme} />
       <EpisodesList
         theme={theme}
         episodes={episodes}
