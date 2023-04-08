@@ -59,6 +59,20 @@ export const StyledButton = styled.button`
   cursor: pointer;
 `
 
+export const NavBar = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--color-toggleBorder);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--color-body);
+`
+
 export const Container = styled.div`
   max-width: 800px;
   margin: 0 auto;
@@ -73,7 +87,7 @@ export const Title = styled.h1`
 
 export const ListItem = styled.li`
   margin-bottom: 16px;
-  padding: 16px;
+  padding: 24px;
   background-color: var(--color-containerBackground);
   border-radius: 8px;
   list-style-type: none;

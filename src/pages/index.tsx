@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { PageProps, graphql } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
-import { FontStyles } from '../styles'
+import { FontStyles, NavBar } from '../styles'
 import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
 const episodesData = require('../data/episodes.json')
@@ -96,11 +96,20 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
   }
 
   return (
-    <div>
+    <div style={{ marginTop: '75px' }}>
       <FontStyles />
-
-      <h1>Audioteca Crítica - Guia de Episódios</h1>
-      <ThemeToggler handleToggleTheme={toggleTheme} currentTheme={theme} />
+      <NavBar
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          height: 50,
+          alignItems: 'center',
+          margin: '0 20px',
+        }}
+      >
+        <h1>Audioteca Crítica - Guia de Episódios</h1>
+        <ThemeToggler handleToggleTheme={toggleTheme} currentTheme={theme} />
+      </NavBar>
       <EpisodesList
         theme={theme}
         episodes={episodes}
