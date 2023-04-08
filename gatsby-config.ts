@@ -6,7 +6,17 @@ const config: GatsbyConfig = {
   flags: {
     DEV_SSR: true,
   },
-  plugins: ['gatsby-plugin-pnpm', 'gatsby-plugin-styled-components'],
+  plugins: [
+    'gatsby-plugin-pnpm',
+    'gatsby-plugin-styled-components',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
+    },
+  ],
   jsxRuntime: 'automatic',
 }
 
