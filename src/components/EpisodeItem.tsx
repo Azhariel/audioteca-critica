@@ -8,6 +8,7 @@ type Props = {
 }
 
 const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
+  console.log(episode)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onEpisodeChange(episode.id, event.target.checked)
   }
@@ -20,12 +21,24 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   return (
     <>
       <h2>{episode.title}</h2>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          {episode.author.map((author) => (
+            <p key={`${author}_${episode.id}`}>{author}</p>
+          ))}
+        </div>
+        <div>
+          <p>{episode.year}</p>
+        </div>
+      </div>
       <p>{episode.description.description}</p>
       <input
         type="checkbox"
         checked={hasListenedToEpisode(episode.id)}
         onChange={handleChange}
+        id={episode.id}
       />
+      <label htmlFor={episode.id}>Já ouvi</label>
     </>
   )
 }
