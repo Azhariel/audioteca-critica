@@ -5,4 +5,6 @@ export interface Episode {
   description: { description: string }
   image: { url: string }
   year: number
+  episodeUrl: string
+  textUrl: string
 }

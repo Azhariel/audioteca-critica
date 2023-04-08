@@ -134,6 +134,8 @@ export const allContentfulEpisode = graphql`
         image {
           url
         }
+        episodeUrl
+        textUrl
       }
     }
   }

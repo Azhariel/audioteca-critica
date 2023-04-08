@@ -20,7 +20,9 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
 
   return (
     <>
-      <h2>{episode.title}</h2>
+      <a href={episode.episodeUrl} target="_blank" rel="noreferrer">
+        <h2>{episode.title}</h2>
+      </a>
       <div style={{ display: 'flex', justifyContent: 'space-between' }}>
         <div>
           {episode.author.map((author) => (
@@ -32,13 +34,22 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
         </div>
       </div>
       <p>{episode.description.description}</p>
-      <input
-        type="checkbox"
-        checked={hasListenedToEpisode(episode.id)}
-        onChange={handleChange}
-        id={episode.id}
-      />
-      <label htmlFor={episode.id}>Já ouvi</label>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <div>
+          <input
+            type="checkbox"
+            checked={hasListenedToEpisode(episode.id)}
+            onChange={handleChange}
+            id={episode.id}
+          />
+          <label htmlFor={episode.id}>Já ouvi</label>
+        </div>
+        <div>
+          <a href={episode.textUrl} target="_blank" rel="noreferrer">
+            Texto
+          </a>
+        </div>
+      </div>
     </>
   )
 }
