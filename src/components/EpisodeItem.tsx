@@ -4,7 +4,7 @@ import storageHandler from '../utils/storageHandler'
 
 type Props = {
   episode: Episode
-  onEpisodeChange: (id: number, listened: boolean) => void
+  onEpisodeChange: (id: string, listened: boolean) => void
 }
 
 const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
@@ -12,7 +12,7 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
     onEpisodeChange(episode.id, event.target.checked)
   }
 
-  const hasListenedToEpisode = (id: number): boolean => {
+  const hasListenedToEpisode = (id: string): boolean => {
     const cookieValue = storageHandler(`episode_${id}`)
     return cookieValue === '1'
   }
@@ -20,7 +20,7 @@ const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
   return (
     <>
       <h2>{episode.title}</h2>
-      <p>{episode.description}</p>
+      <p>{episode.description.description}</p>
       <input
         type="checkbox"
         checked={hasListenedToEpisode(episode.id)}

@@ -1,6 +1,8 @@
 export interface Episode {
-  id: number
+  id: string
+  author: string[]
   title: string
-  description: string
-  listened: boolean
+  description: { description: string }
+  image: { url: string }
+  year: number
 }

@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { PageProps } from 'gatsby'
+import { PageProps, graphql } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
 import { FontStyles } from '../styles'
@@ -7,7 +7,14 @@ import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
 const episodesData = require('../data/episodes.json')
 
-type Props = PageProps & {}
+type Query = {
+  data: {
+    allContentfulEpisode: {
+      nodes: Episode[]
+    }
+  }
+}
+type Props = PageProps & { data: any }
 
 export const Head = () => {
   return (
@@ -18,8 +25,10 @@ export const Head = () => {
   )
 }
 
-const IndexPage: React.FC<Props> = () => {
-  const [episodes, setEpisodes] = React.useState<Episode[]>(episodesData)
+const IndexPage: React.FC<Props> = ({ data }: Query) => {
+  const [episodes, setEpisodes] = React.useState<Episode[]>(
+    data.allContentfulEpisode.nodes,
+  )
   const [percentageListened, setPercentageListened] = React.useState<number>(0)
   const [theme, setTheme] = React.useState('')
 
@@ -71,7 +80,7 @@ const IndexPage: React.FC<Props> = () => {
     storageHandler(cookieName)
   })
 
-  const handleEpisodeChange = (id: number, listened: boolean) => {
+  const handleEpisodeChange = (id: string, listened: boolean) => {
     const updatedEpisodes = episodes.map((episode) => {
       if (episode.id === id) {
         return { ...episode, listened }
@@ -101,5 +110,24 @@ const IndexPage: React.FC<Props> = () => {
     </div>
   )
 }
+
+export const allContentfulEpisode = graphql`
+  {
+    allContentfulEpisode {
+      nodes {
+        id
+        title
+        year
+        author
+        description {
+          description: description
+        }
+        image {
+          url
+        }
+      }
+    }
+  }
+`
 
 export default IndexPage
