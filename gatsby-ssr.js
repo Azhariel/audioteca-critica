@@ -48,10 +48,21 @@ const MagicScriptTag = () => {
 
   // Is there a Saved Theme Preference in localStorage?
   let preferredTheme = localStorage.getItem('theme');
+  if (preferredTheme) {
+    setTheme(preferredTheme);
+    console.log('preferredTheme inside check', preferredTheme)
+    return;
+  }
 
   // Is there an Operating System Preference?
 
   let darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  if (darkQuery.matches) {
+    setTheme('dark');
+    return;
+  }
+
+
 
   // PICK THE INITIAL THEME
   // 1. Use the theme from localStorage, if any
@@ -59,12 +70,12 @@ const MagicScriptTag = () => {
   // 3. Default to light
   console.log('preferredTheme', preferredTheme)
   console.log('darkQuery', darkQuery)
-  setTheme(preferredTheme || (darkQuery.matches ? 'dark' : 'light'));
+  setTheme('light');
 })();`
   // eslint-disable-next-line react/no-danger
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
 
-export const onRenderBody = ({ setPreBodyComponents }) => {
-  setPreBodyComponents(<MagicScriptTag key={'scripptt'} />)
+export const onRenderBody = ({ setHeadComponents }) => {
+  setHeadComponents(<MagicScriptTag key={'scripptt'} />)
 }
