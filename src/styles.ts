@@ -10,14 +10,16 @@ const colors = {
   Text: '#363537',
   ToggleBorder: '#FFF',
   Background: '#363537',
-  Link: '#b01929',
+  Negative: '#b01929',
+  Positive: '#06A129',
   darkTheme: {
     Body: '#363537',
     ContainerBackground: '#2b2b2b',
     Text: '#FAFAFA',
     ToggleBorder: '#6B8096',
     Background: '#999',
-    Link: '#fd253c',
+    Negative: '#fd253c',
+    Positive: '#08C434',
   },
 }
 
@@ -28,7 +30,8 @@ export const FontStyles = createGlobalStyle`
     --color-text: ${colors.Text};
     --color-toggleBorder: ${colors.ToggleBorder};
     --color-background: ${colors.Background};
-    --color-link: ${colors.Link};
+    --color-negative: ${colors.Negative};
+    --color-positive: ${colors.Positive};
   }
 
   :root.dark {
@@ -37,7 +40,8 @@ export const FontStyles = createGlobalStyle`
     --color-text: ${colors.darkTheme.Text};
     --color-toggleBorder: ${colors.darkTheme.ToggleBorder};
     --color-background: ${colors.darkTheme.Background};
-    --color-link: ${colors.darkTheme.Link};
+    --color-negative: ${colors.darkTheme.Negative};
+    --color-positive: ${colors.darkTheme.Positive};
   }
 
   * {
@@ -45,7 +49,7 @@ export const FontStyles = createGlobalStyle`
     }
 
     a:link {
-      color: var(--color-link);
+      color: var(--color-negative);
       text-decoration: none;
     }
 
@@ -83,7 +87,7 @@ export const NavBar = styled.nav`
 `
 
 export const Container = styled.div`
-  max-width: 800px;
+  max-width: 80%;
   margin: 0 auto;
   padding: 0 16px;
 `
@@ -114,4 +118,97 @@ export const ListItem = styled.li`
   input[type='checkbox'] {
     margin-right: 8px;
   }
+`
+
+export const ModalBackground = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ModalContainer = styled.div`
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+`
+
+export const ModalCloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`
+
+export const EpisodeCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  padding: 16px;
+  background-color: var(--color-containerBackground);
+  border-radius: 8px;
+  margin-top: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+`
+
+export const EpisodeCardImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 8px;
+`
+
+export const EpisodeCardTitle = styled.h2`
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--color-negative);
+  :hover {
+    color: var(--color-positive);
+    cursor: pointer;
+  }
+`
+
+export const EpisodeCardAuthor = styled.p`
+  font-size: 16px;
+  color: var(--color-text);
+  margin: 0;
+`
+
+export const EpisodeCardYear = styled.p`
+  font-size: 16px;
+  color: var(--color-text);
+  margin: 0;
+`
+
+export const EpisodeCardDescription = styled.p`
+  font-size: 16px;
+  margin: 16px 0;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+`
+
+export const EpisodeCardButton = styled.button<{ positive?: Boolean }>`
+  background-color: ${(props) =>
+    props.positive ? 'var(--color-positive)' : 'var(--color-negative)'};
+  color: #fff;
+  font-size: 16px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 `

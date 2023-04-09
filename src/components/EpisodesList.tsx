@@ -1,9 +1,9 @@
 import React from 'react'
-import EpisodeItem from './EpisodeItem'
 import { Episode } from '../types'
-import { Container, Title, ListItem } from '../styles'
+import { Container, Title } from '../styles'
 import LinearProgress from '@mui/material/LinearProgress'
 import { ThemeProvider, createTheme } from '@mui/material/styles'
+import EpisodeCard from './EpisodeCard'
 
 type Props = {
   episodes: Episode[]
@@ -35,13 +35,23 @@ const EpisodesList: React.FC<Props> = ({
       {theme !== 'dark' && (
         <LinearProgress variant="determinate" value={percentageListened} />
       )}
-      <ul style={{ padding: 0 }}>
+      <div
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'center',
+          gap: '10px',
+          gridTemplateColumns: 'repeat(3, 1fr)',
+        }}
+      >
         {episodes.map((episode) => (
-          <ListItem key={episode.id}>
-            <EpisodeItem episode={episode} onEpisodeChange={onEpisodeChange} />
-          </ListItem>
+          <EpisodeCard
+            episode={episode}
+            onListen={onEpisodeChange}
+            key={`${episode.id}card`}
+          />
         ))}
-      </ul>
+      </div>
     </Container>
   )
 }
