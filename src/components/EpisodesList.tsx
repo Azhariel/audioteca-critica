@@ -40,7 +40,7 @@ const EpisodesList: React.FC<Props> = ({
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'center',
-          gap: '10px',
+          gap: '25px',
           gridTemplateColumns: 'repeat(3, 1fr)',
         }}
       >

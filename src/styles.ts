@@ -211,6 +211,7 @@ export const EpisodeCardDescription = styled.p<{ full?: Boolean }>`
   color: var(--color-text);
   display: -webkit-box;
   text-justify: auto;
+  ${(props) => (props.full ? 'overflow-y: auto;' : '')}
   ${(props) => (props.full ? '' : 'text-overflow: ellipsis;')}
   ${(props) => (props.full ? '' : '-webkit-line-clamp: 3;')}
   ${(props) => (props.full ? '' : '-webkit-box-orient: vertical;')}
