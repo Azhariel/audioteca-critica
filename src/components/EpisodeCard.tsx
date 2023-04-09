@@ -12,6 +12,7 @@ import storageHandler from '@/utils/storageHandler'
 import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
 import { useEffect, useState } from 'react'
+import Modal from './Modal'
 
 interface EpisodeCardProps {
   episode: Episode
@@ -20,6 +21,7 @@ interface EpisodeCardProps {
 
 const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
   const [hasListened, setHasListened] = useState(false)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     setHasListened(hasListenedToEpisode(episode.id))
@@ -46,9 +48,46 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
 
   return (
     <EpisodeCardContainer>
-      {episode.image && (
-        <EpisodeCardImage src={episode.image.url} alt={episode.title} />
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <EpisodeCardImage
+              src={episode.image.url}
+              alt={episode.title}
+              onClick={() => setShowModal(true)}
+              style={{ width: 'auto', height: '200px' }}
+            />
+          </div>
+          <EpisodeCardTitle onClick={onClickUrl(episode.episodeUrl)}>
+            {episode.title}
+          </EpisodeCardTitle>
+          <EpisodeCardAuthor>
+            {episode.author.map((author: string) => author).join(', ')}
+          </EpisodeCardAuthor>
+          <EpisodeCardYear>{episode.year}</EpisodeCardYear>
+          <EpisodeCardDescription full onClick={() => setShowModal(true)}>
+            {episode.description.description}
+          </EpisodeCardDescription>
+          <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+            <EpisodeCardButton onClick={handleListen} positive={!hasListened}>
+              {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
+            </EpisodeCardButton>
+            <EpisodeCardButton
+              outline
+              positive
+              onClick={onClickUrl(episode.textUrl)}
+            >
+              Texto
+            </EpisodeCardButton>
+          </div>
+        </Modal>
       )}
+
+      <EpisodeCardImage
+        src={episode.image.url}
+        alt={episode.title}
+        onClick={() => setShowModal(true)}
+      />
       <EpisodeCardTitle onClick={onClickUrl(episode.episodeUrl)}>
         {episode.title}
       </EpisodeCardTitle>
@@ -56,14 +95,18 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
         {episode.author.map((author: string) => author).join(', ')}
       </EpisodeCardAuthor>
       <EpisodeCardYear>{episode.year}</EpisodeCardYear>
-      <EpisodeCardDescription>
+      <EpisodeCardDescription onClick={() => setShowModal(true)}>
         {episode.description.description}
       </EpisodeCardDescription>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
         <EpisodeCardButton onClick={handleListen} positive={!hasListened}>
           {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
         </EpisodeCardButton>
-        <EpisodeCardButton positive onClick={onClickUrl(episode.textUrl)}>
+        <EpisodeCardButton
+          outline
+          positive
+          onClick={onClickUrl(episode.textUrl)}
+        >
           Texto
         </EpisodeCardButton>
       </div>

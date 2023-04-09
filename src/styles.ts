@@ -130,22 +130,34 @@ export const ModalBackground = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 `
 
 export const ModalContainer = styled.div`
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  height: auto;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+  background-color: var(--color-containerBackground);
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  z-index: 3;
 `
 
 export const ModalCloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: none;
+  display: flex;
+  position: fixed;
+  font-size: 1rem;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-negative);
+  border: var(--color-toggleBorder);
+  border-radius: 8px;
+  color: var(--color-body);
   cursor: pointer;
 `
 
@@ -191,24 +203,41 @@ export const EpisodeCardYear = styled.p`
   margin: 0;
 `
 
-export const EpisodeCardDescription = styled.p`
+export const EpisodeCardDescription = styled.p<{ full?: Boolean }>`
   font-size: 16px;
   margin: 16px 0;
   line-height: 1.5;
   overflow: hidden;
-  text-overflow: ellipsis;
+  color: var(--color-text);
   display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  text-justify: auto;
+  ${(props) => (props.full ? '' : 'text-overflow: ellipsis;')}
+  ${(props) => (props.full ? '' : '-webkit-line-clamp: 3;')}
+  ${(props) => (props.full ? '' : '-webkit-box-orient: vertical;')}
 `
 
-export const EpisodeCardButton = styled.button<{ positive?: Boolean }>`
-  background-color: ${(props) =>
-    props.positive ? 'var(--color-positive)' : 'var(--color-negative)'};
-  color: #fff;
+export const EpisodeCardButton = styled.button<{
+  positive?: Boolean
+  outline?: Boolean
+}>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${(props) => {
+    if (props.outline) return 'transparent'
+    if (props.positive) return 'var(--color-positive)'
+    return 'var(--color-negative)'
+  }};
+  border: ${(props) => {
+    if (props.outline)
+      if (props.positive) return '2px solid var(--color-positive)'
+      else return '2px solid var(--color-negative)'
+    return 'none'
+  }};
+  color: ${(props) =>
+    props.outline ? 'var(--color-text)' : 'var(--color-body)'};
   font-size: 16px;
   padding: 8px 16px;
-  border: none;
   border-radius: 4px;
   cursor: pointer;
 `
