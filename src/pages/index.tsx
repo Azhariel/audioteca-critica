@@ -101,7 +101,21 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
           margin: '0 20px',
         }}
       >
-        <h1>Audioteca Crítica - Guia de Episódios</h1>
+        <div
+          style={{
+            display: 'flex',
+            gap: '10px',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <img
+            src="/logo.png"
+            alt="logo da audioteca"
+            style={{ height: 40, borderRadius: '12px' }}
+          />
+          <h1>Audioteca Crítica - Guia de Episódios</h1>
+        </div>
         <ThemeToggler handleToggleTheme={toggleTheme} currentTheme={theme} />
       </NavBar>
       <EpisodesList
