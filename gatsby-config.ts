@@ -19,6 +19,17 @@ const config: GatsbyConfig = {
         accessToken: process.env.CONTENTFUL_API_TOKEN,
       },
     },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Audioteca Crítica',
+        short_name: 'AudiotecaCritica',
+        start_url: '/',
+        background_color: '#f7f0eb',
+        display: 'standalone',
+        icon: 'src/images/icon.png',
+      },
+    },
   ],
   jsxRuntime: 'automatic',
 }
