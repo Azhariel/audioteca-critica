@@ -7,7 +7,7 @@ const config: GatsbyConfig = {
     title: 'Audioteca Crítica',
     description: 'Guia de episódios para o podcast Audioteca Crítica',
     siteUrl: 'https://audioteca-critica.vercel.app',
-    image: '/images/audioteca-critica.png',
+    image: '/images/icon.png',
     instagramUsername: '@audiotecacritica',
   },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
