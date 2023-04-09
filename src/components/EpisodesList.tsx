@@ -29,14 +29,18 @@ const EpisodesList: React.FC<Props> = ({
       <Title>Episódios</Title>
       {theme === 'dark' && (
         <ThemeProvider theme={darkTheme}>
-          <LinearProgress variant="determinate" value={percentageListened} />
+          <LinearProgress
+            variant="determinate"
+            value={percentageListened}
+            aria-label="Barra de progresso de visualização dos episódios"
+          />
         </ThemeProvider>
       )}
       {theme !== 'dark' && (
         <LinearProgress
           variant="determinate"
           value={percentageListened}
-          aria-label="Barra de progresso"
+          aria-label="Barra de progresso de visualização dos episódios"
         />
       )}
       <div
