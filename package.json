@@ -11,6 +11,7 @@
     "typescript"
   ],
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
