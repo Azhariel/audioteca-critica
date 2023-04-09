@@ -8,7 +8,6 @@ type Props = {
 }
 
 const EpisodeItem: React.FC<Props> = ({ episode, onEpisodeChange }) => {
-  console.log(episode)
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onEpisodeChange(episode.id, event.target.checked)
   }
