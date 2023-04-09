@@ -1,4 +1,6 @@
 import type { GatsbyConfig } from 'gatsby'
+import dotenv from 'dotenv'
+dotenv.config()
 
 const config: GatsbyConfig = {
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
@@ -6,7 +8,18 @@ const config: GatsbyConfig = {
   flags: {
     DEV_SSR: true,
   },
-  plugins: ['gatsby-plugin-pnpm', 'gatsby-plugin-styled-components'],
+  plugins: [
+    'gatsby-plugin-pnpm',
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-image',
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_API_TOKEN,
+      },
+    },
+  ],
   jsxRuntime: 'automatic',
 }
 

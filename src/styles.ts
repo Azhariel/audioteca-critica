@@ -4,62 +4,36 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 
-export const lightTheme = {
-  body: '#fafafa',
-  containerBackground: '#f2f2f2',
-  text: '#363537',
-  toggleBorder: '#FFF',
-  background: '#363537',
-}
-export const darkTheme = {
-  body: '#363537',
-  containerBackground: '#2b2b2b',
-  text: '#FAFAFA',
-  toggleBorder: '#6B8096',
-  background: '#999',
-}
-
-export const StyledButton = styled.button`
-  background-color: var(--color-body);
-  color: var(--color-text);
-  border: 2px solid var(--color-toggleBorder);
-  font-size: 0.9rem;
-  padding: 0.25rem 1rem;
-  border-radius: 5px;
-  margin: 0 0.5rem;
-  cursor: pointer;
-`
-
 const colors = {
-  colorBody: '#fafafa',
-  colorContainerBackground: '#f2f2f2',
-  colorText: '#363537',
-  colorToggleBorder: '#FFF',
-  colorBackground: '#363537',
+  Body: '#fafafa',
+  ContainerBackground: '#f2f2f2',
+  Text: '#363537',
+  ToggleBorder: '#FFF',
+  Background: '#363537',
   darkTheme: {
-    colorBody: '#363537',
-    colorContainerBackground: '#2b2b2b',
-    colorText: '#FAFAFA',
-    colorToggleBorder: '#6B8096',
-    colorBackground: '#999',
+    Body: '#363537',
+    ContainerBackground: '#2b2b2b',
+    Text: '#FAFAFA',
+    ToggleBorder: '#6B8096',
+    Background: '#999',
   },
 }
 
 export const FontStyles = createGlobalStyle`
     :root {
-    --color-body: ${colors.colorBody};
-    --color-containerBackground: ${colors.colorContainerBackground};
-    --color-text: ${colors.colorText};
-    --color-toggleBorder: ${colors.colorToggleBorder};
-    --color-background: ${colors.colorBackground};
+    --color-body: ${colors.Body};
+    --color-containerBackground: ${colors.ContainerBackground};
+    --color-text: ${colors.Text};
+    --color-toggleBorder: ${colors.ToggleBorder};
+    --color-background: ${colors.Background};
   }
 
   :root.dark {
-    --color-body: ${colors.darkTheme.colorBody};
-    --color-containerBackground: ${colors.darkTheme.colorContainerBackground};
-    --color-text: ${colors.darkTheme.colorText};
-    --color-toggleBorder: ${colors.darkTheme.colorToggleBorder};
-    --color-background: ${colors.darkTheme.colorBackground};
+    --color-body: ${colors.darkTheme.Body};
+    --color-containerBackground: ${colors.darkTheme.ContainerBackground};
+    --color-text: ${colors.darkTheme.Text};
+    --color-toggleBorder: ${colors.darkTheme.ToggleBorder};
+    --color-background: ${colors.darkTheme.Background};
   }
 
   * {
@@ -72,6 +46,31 @@ export const FontStyles = createGlobalStyle`
     transition: all 0.50s linear;
   }
 
+`
+
+export const StyledButton = styled.button`
+  background-color: var(--color-body);
+  color: var(--color-text);
+  border: 2px solid var(--color-toggleBorder);
+  font-size: 0.9rem;
+  padding: 0.25rem 1rem;
+  border-radius: 5px;
+  margin: 0 0.5rem;
+  cursor: pointer;
+`
+
+export const NavBar = styled.nav`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 2px solid var(--color-toggleBorder);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: var(--color-body);
 `
 
 export const Container = styled.div`
@@ -88,7 +87,7 @@ export const Title = styled.h1`
 
 export const ListItem = styled.li`
   margin-bottom: 16px;
-  padding: 16px;
+  padding: 24px;
   background-color: var(--color-containerBackground);
   border-radius: 8px;
   list-style-type: none;

@@ -7,7 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles'
 
 type Props = {
   episodes: Episode[]
-  onEpisodeChange: (id: number, listened: boolean) => void
+  onEpisodeChange: (id: string, listened: boolean) => void
   percentageListened: number
   theme: string
 }
