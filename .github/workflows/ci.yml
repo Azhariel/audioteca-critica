@@ -38,6 +38,3 @@ jobs:
 
       - name: Run tests
         run: pnpm test
-
-      - name: Check commits messages
-        uses: wagoid/commitlint-github-action@v5
