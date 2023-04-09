@@ -10,12 +10,14 @@ const colors = {
   Text: '#363537',
   ToggleBorder: '#FFF',
   Background: '#363537',
+  Link: '#b01929',
   darkTheme: {
     Body: '#363537',
     ContainerBackground: '#2b2b2b',
     Text: '#FAFAFA',
     ToggleBorder: '#6B8096',
     Background: '#999',
+    Link: '#fd253c',
   },
 }
 
@@ -26,6 +28,7 @@ export const FontStyles = createGlobalStyle`
     --color-text: ${colors.Text};
     --color-toggleBorder: ${colors.ToggleBorder};
     --color-background: ${colors.Background};
+    --color-link: ${colors.Link};
   }
 
   :root.dark {
@@ -34,10 +37,16 @@ export const FontStyles = createGlobalStyle`
     --color-text: ${colors.darkTheme.Text};
     --color-toggleBorder: ${colors.darkTheme.ToggleBorder};
     --color-background: ${colors.darkTheme.Background};
+    --color-link: ${colors.darkTheme.Link};
   }
 
   * {
     font-family: "Roboto" !important;
+    }
+
+    a:link {
+      color: var(--color-link);
+      text-decoration: none;
     }
 
     body {
