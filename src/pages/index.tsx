@@ -5,7 +5,6 @@ import { Episode } from '../types'
 import { FontStyles, NavBar } from '../styles'
 import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
-const episodesData = require('../data/episodes.json')
 
 type Query = {
   data: {
@@ -19,7 +18,7 @@ type Props = PageProps & { data: any }
 export const Head = () => {
   return (
     <>
-      <title>Audioteca Crítica - Guia de Episódios</title>
+      <title key={'pageTitle'}>Audioteca Crítica - Guia de Episódios</title>
       <meta name="viewport" content="initial-scale=1, width=device-width" />
     </>
   )
@@ -74,11 +73,6 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
     episodePercentage()
     setPercentageListened(Number(storageHandler('percentage_listened')))
   }, [episodePercentage])
-
-  episodesData.forEach((episode: Episode) => {
-    const cookieName = `episode_${episode.id}`
-    storageHandler(cookieName)
-  })
 
   const handleEpisodeChange = (id: string, listened: boolean) => {
     const updatedEpisodes = episodes.map((episode) => {
