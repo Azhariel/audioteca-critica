@@ -19,7 +19,16 @@ export const Head = () => {
   return (
     <>
       <title key={'pageTitle'}>Audioteca Crítica - Guia de Episódios</title>
-      <meta name="viewport" content="initial-scale=1, width=device-width" />
+      <meta
+        key={'metaViewport'}
+        name="viewport"
+        content="initial-scale=1, width=device-width"
+      />
+      <meta
+        key={'metaDescription'}
+        name="description"
+        content="Guia de episódios da Audioteca Crítica, podcast de leituras marxistas."
+      />
     </>
   )
 }
