@@ -33,7 +33,11 @@ const EpisodesList: React.FC<Props> = ({
         </ThemeProvider>
       )}
       {theme !== 'dark' && (
-        <LinearProgress variant="determinate" value={percentageListened} />
+        <LinearProgress
+          variant="determinate"
+          value={percentageListened}
+          aria-label="Barra de progresso"
+        />
       )}
       <div
         style={{

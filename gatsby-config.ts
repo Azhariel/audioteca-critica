@@ -3,6 +3,13 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const config: GatsbyConfig = {
+  siteMetadata: {
+    title: 'Audioteca Crítica',
+    description: 'Guia de episódios para o podcast Audioteca Crítica',
+    siteUrl: 'https://audioteca-critica.vercel.app',
+    image: '/images/audioteca-critica.png',
+    instagramUsername: '@audiotecacritica',
+  },
   // Since `gatsby-plugin-typescript` is automatically included in Gatsby you
   // don't need to define it here (just if you need to change the options)
   flags: {

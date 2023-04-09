@@ -76,6 +76,7 @@ const MagicScriptTag = () => {
   return <script dangerouslySetInnerHTML={{ __html: codeToRunOnClient }} />
 }
 
-export const onRenderBody = ({ setHeadComponents }) => {
-  setHeadComponents(<MagicScriptTag key={'scripptt'} />)
+export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
+  setHeadComponents(<MagicScriptTag key={'noThemeFlickerScript'} />)
+  setHtmlAttributes({ lang: 'pt-BR' })
 }

@@ -69,13 +69,18 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
             {episode.description.description}
           </EpisodeCardDescription>
           <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-            <EpisodeCardButton onClick={handleListen} positive={!hasListened}>
+            <EpisodeCardButton
+              onClick={handleListen}
+              positive={!hasListened}
+              aria-label="Episódio ouvido"
+            >
               {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
             </EpisodeCardButton>
             <EpisodeCardButton
               outline
               positive
               onClick={onClickUrl(episode.textUrl)}
+              aria-label="Texto do episódio"
             >
               Texto
             </EpisodeCardButton>
@@ -99,13 +104,18 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
         {episode.description.description}
       </EpisodeCardDescription>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <EpisodeCardButton onClick={handleListen} positive={!hasListened}>
+        <EpisodeCardButton
+          onClick={handleListen}
+          positive={!hasListened}
+          aria-label="Episódio ouvido"
+        >
           {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
         </EpisodeCardButton>
         <EpisodeCardButton
           outline
           positive
           onClick={onClickUrl(episode.textUrl)}
+          aria-label="Texto do episódio"
         >
           Texto
         </EpisodeCardButton>
