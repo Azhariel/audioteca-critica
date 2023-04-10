@@ -1,8 +1,10 @@
 import styled, { createGlobalStyle } from 'styled-components'
+import { styled as muiStyled } from '@mui/material/styles'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
+import { TextField } from '@mui/material'
 
 const colors = {
   Body: '#fafafa',
@@ -90,6 +92,24 @@ export const Container = styled.div`
   max-width: 80%;
   margin: 0 auto;
   padding: 0 16px;
+`
+
+export const NavBarTitle = styled.h1`
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 320px) {
+    font-size: 0.6rem;
+  }
 `
 
 export const Title = styled.h1`
@@ -239,3 +259,28 @@ export const EpisodeCardButton = styled.button<{
   border-radius: 4px;
   cursor: pointer;
 `
+
+export const SearchBar = muiStyled(TextField)({
+  '& label': {
+    color: 'var(--text-color)',
+  },
+  '& label.Mui-focused': {
+    color: 'var(--text-color)',
+  },
+  '& .MuiInput-underline:before': {
+    borderBottomColor: 'transparent',
+  },
+  '& .MuiInput-underline:focused': {
+    borderBottomColor: 'transparent',
+  },
+  '& .MuiInput-underline:after': {
+    borderBottomColor: 'transparent',
+  },
+  '& .MuiInput-root': {
+    color: 'var(--text-color)',
+    autoFocus: true,
+  },
+  '&.Mui-focused fieldset': {
+    borderColor: 'green',
+  },
+})

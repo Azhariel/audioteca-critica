@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { PageProps, graphql } from 'gatsby'
 import EpisodesList from '../components/EpisodesList'
 import { Episode } from '../types'
-import { FontStyles, NavBar } from '../styles'
+import { FontStyles, NavBar, NavBarTitle, SearchBar } from '../styles'
 import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
 import { StaticImage } from 'gatsby-plugin-image'
@@ -40,6 +40,18 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
   )
   const [percentageListened, setPercentageListened] = React.useState<number>(0)
   const [theme, setTheme] = React.useState('')
+  const [search, setSearch] = React.useState('')
+  let searchedEpisodes = episodes.filter((episode) => {
+    const authors = episode.author
+      .map((author) => author)
+      .join(' ')
+      .toLocaleLowerCase()
+    return (
+      episode.title.toLocaleLowerCase().includes(search.toLocaleLowerCase()) ||
+      authors.includes(search.toLocaleLowerCase())
+    )
+  })
+  if (!search) searchedEpisodes = [...episodes]
 
   const isDarkMode = () => {
     if (typeof window !== 'undefined') {
@@ -100,13 +112,13 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
   }
 
   return (
-    <div style={{ marginTop: '75px' }}>
+    <div style={{ marginTop: '90px' }}>
       <FontStyles />
       <NavBar
         style={{
           display: 'flex',
           justifyContent: 'space-between',
-          height: 50,
+          height: 70,
           alignItems: 'center',
           margin: '0 20px',
         }}
@@ -117,6 +129,7 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
             gap: '10px',
             alignItems: 'center',
             justifyContent: 'center',
+            marginRight: '20px',
           }}
         >
           <StaticImage
@@ -125,13 +138,24 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
             height={40}
             style={{ borderRadius: '12px' }}
           />
-          <h1>Audioteca Crítica - Guia de Episódios</h1>
+          <NavBarTitle>Audioteca Crítica - Guia de Episódios</NavBarTitle>
+        </div>
+        <div style={{ display: 'flex', width: '50%' }}>
+          <SearchBar
+            id="fullWidth"
+            variant="standard"
+            label="Pesquisar"
+            fullWidth
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              setSearch(event.target.value)
+            }}
+          />
         </div>
         <ThemeToggler handleToggleTheme={toggleTheme} currentTheme={theme} />
       </NavBar>
       <EpisodesList
         theme={theme}
-        episodes={episodes}
+        episodes={searchedEpisodes}
         onEpisodeChange={handleEpisodeChange}
         percentageListened={percentageListened}
       />
