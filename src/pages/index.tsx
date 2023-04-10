@@ -5,6 +5,7 @@ import { Episode } from '../types'
 import { FontStyles, NavBar } from '../styles'
 import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
+import { StaticImage } from 'gatsby-plugin-image'
 
 type Query = {
   data: {
@@ -118,10 +119,11 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
             justifyContent: 'center',
           }}
         >
-          <img
-            src="/logo.png"
+          <StaticImage
+            src="../../static/logo.png"
             alt="logo da audioteca"
-            style={{ height: 40, borderRadius: '12px' }}
+            height={40}
+            style={{ borderRadius: '12px' }}
           />
           <h1>Audioteca Crítica - Guia de Episódios</h1>
         </div>
@@ -149,7 +151,8 @@ export const allContentfulEpisode = graphql`
           description: description
         }
         image {
-          url
+          gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+          id
         }
         episodeUrl
         textUrl

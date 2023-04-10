@@ -3,7 +3,6 @@ import {
   EpisodeCardButton,
   EpisodeCardContainer,
   EpisodeCardDescription,
-  EpisodeCardImage,
   EpisodeCardTitle,
   EpisodeCardYear,
 } from '@/styles'
@@ -13,6 +12,7 @@ import CheckRoundedIcon from '@mui/icons-material/CheckRounded'
 import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
 import { useEffect, useState } from 'react'
 import Modal from './Modal'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 interface EpisodeCardProps {
   episode: Episode
@@ -50,12 +50,22 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
     <EpisodeCardContainer>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <EpisodeCardImage
-              src={episode.image.url}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              height: '510px',
+            }}
+          >
+            <GatsbyImage
+              image={episode.image.gatsbyImageData}
               alt={episode.title}
-              onClick={() => setShowModal(true)}
-              style={{ width: 'auto', height: '200px' }}
+              objectFit="cover"
+              style={{
+                width: '100%',
+                borderRadius: '8px',
+                marginBottom: '8px',
+              }}
             />
           </div>
           <EpisodeCardTitle onClick={onClickUrl(episode.episodeUrl)}>
@@ -65,7 +75,7 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
             {episode.author.map((author: string) => author).join(', ')}
           </EpisodeCardAuthor>
           <EpisodeCardYear>{episode.year}</EpisodeCardYear>
-          <EpisodeCardDescription full onClick={() => setShowModal(true)}>
+          <EpisodeCardDescription full>
             {episode.description.description}
           </EpisodeCardDescription>
           <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
@@ -87,12 +97,23 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
           </div>
         </Modal>
       )}
-
-      <EpisodeCardImage
-        src={episode.image.url}
-        alt={episode.title}
+      <div
         onClick={() => setShowModal(true)}
-      />
+        style={{ display: 'flex', cursor: 'pointer', maxHeight: '200px' }}
+      >
+        <GatsbyImage
+          image={episode.image.gatsbyImageData}
+          alt={episode.title}
+          objectFit="cover"
+          loading="eager"
+          style={{
+            width: '100%',
+            height: 'auto',
+            borderRadius: '8px',
+            marginBottom: '8px',
+          }}
+        />
+      </div>
       <EpisodeCardTitle onClick={onClickUrl(episode.episodeUrl)}>
         {episode.title}
       </EpisodeCardTitle>
@@ -100,7 +121,10 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
         {episode.author.map((author: string) => author).join(', ')}
       </EpisodeCardAuthor>
       <EpisodeCardYear>{episode.year}</EpisodeCardYear>
-      <EpisodeCardDescription onClick={() => setShowModal(true)}>
+      <EpisodeCardDescription
+        onClick={() => setShowModal(true)}
+        style={{ cursor: 'pointer' }}
+      >
         {episode.description.description}
       </EpisodeCardDescription>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
