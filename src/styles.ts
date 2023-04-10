@@ -56,11 +56,10 @@ export const FontStyles = createGlobalStyle`
     body {
     background: var(--color-body);
     color: var(--color-text);
-    transition: all 0.50s linear;
+    transition: all 0.50s linear 0s;
   }
 
 `
-
 export const StyledButton = styled.button`
   background-color: var(--color-body);
   color: var(--color-text);
@@ -84,6 +83,7 @@ export const NavBar = styled.nav`
   right: 0;
   z-index: 1;
   background-color: var(--color-body);
+  transition: all 0.5s linear 0s;
 `
 
 export const Container = styled.div`
@@ -136,7 +136,7 @@ export const ModalBackground = styled.div`
 export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 60%;
+  max-width: 50%;
   height: auto;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
@@ -145,6 +145,10 @@ export const ModalContainer = styled.div`
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   z-index: 3;
+
+  @media (max-width: 1024px) {
+    max-width: 80%;
+  }
 `
 
 export const ModalCloseButton = styled.button`
@@ -159,6 +163,7 @@ export const ModalCloseButton = styled.button`
   border-radius: 8px;
   color: var(--color-body);
   cursor: pointer;
+  z-index: 4;
 `
 
 export const EpisodeCardContainer = styled.div`
@@ -171,14 +176,6 @@ export const EpisodeCardContainer = styled.div`
   border-radius: 8px;
   margin-top: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-`
-
-export const EpisodeCardImage = styled.img`
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 8px;
 `
 
 export const EpisodeCardTitle = styled.h2`
