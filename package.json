@@ -38,6 +38,7 @@
     "@mui/icons-material": "5.11.16",
     "@mui/material": "5.11.16",
     "@mui/styled-engine-sc": "5.11.11",
+    "@vercel/analytics": "0.1.11",
     "babel-plugin-styled-components": "2.1.1",
     "dotenv": "16.0.3",
     "gatsby": "5.8.1",

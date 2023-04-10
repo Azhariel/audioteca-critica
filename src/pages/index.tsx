@@ -6,6 +6,7 @@ import { FontStyles, NavBar, NavBarTitle, SearchBar } from '../styles'
 import storageHandler from '@/utils/storageHandler'
 import ThemeToggler from '@/components/ThemeToggler'
 import { StaticImage } from 'gatsby-plugin-image'
+import { Analytics } from '@vercel/analytics/react'
 
 type Query = {
   data: {
@@ -114,6 +115,7 @@ const IndexPage: React.FC<Props> = ({ data }: Query) => {
   return (
     <div style={{ marginTop: '90px' }}>
       <FontStyles />
+      <Analytics />
       <NavBar
         style={{
           display: 'flex',
