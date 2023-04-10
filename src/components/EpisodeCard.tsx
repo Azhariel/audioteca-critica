@@ -13,6 +13,7 @@ import ClearRoundedIcon from '@mui/icons-material/ClearRounded'
 import { useEffect, useState } from 'react'
 import Modal from './Modal'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Tooltip } from '@mui/material'
 
 interface EpisodeCardProps {
   episode: Episode
@@ -79,21 +80,29 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
             {episode.description.description}
           </EpisodeCardDescription>
           <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-            <EpisodeCardButton
-              onClick={handleListen}
-              positive={!hasListened}
-              aria-label="Episódio ouvido"
+            <Tooltip
+              title={
+                hasListened ? 'Desmarcar como ouvido' : 'Marcar como ouvido'
+              }
             >
-              {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
-            </EpisodeCardButton>
-            <EpisodeCardButton
-              outline
-              positive
-              onClick={onClickUrl(episode.textUrl)}
-              aria-label="Texto do episódio"
-            >
-              Texto
-            </EpisodeCardButton>
+              <EpisodeCardButton
+                onClick={handleListen}
+                positive={!hasListened}
+                aria-label="Episódio ouvido"
+              >
+                {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
+              </EpisodeCardButton>
+            </Tooltip>
+            <Tooltip title="Texto do episódio">
+              <EpisodeCardButton
+                outline
+                positive
+                onClick={onClickUrl(episode.textUrl)}
+                aria-label="Texto do episódio"
+              >
+                Texto
+              </EpisodeCardButton>
+            </Tooltip>
           </div>
         </Modal>
       )}
@@ -128,21 +137,27 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
         {episode.description.description}
       </EpisodeCardDescription>
       <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-        <EpisodeCardButton
-          onClick={handleListen}
-          positive={!hasListened}
-          aria-label="Episódio ouvido"
+        <Tooltip
+          title={hasListened ? 'Desmarcar como ouvido' : 'Marcar como ouvido'}
         >
-          {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
-        </EpisodeCardButton>
-        <EpisodeCardButton
-          outline
-          positive
-          onClick={onClickUrl(episode.textUrl)}
-          aria-label="Texto do episódio"
-        >
-          Texto
-        </EpisodeCardButton>
+          <EpisodeCardButton
+            onClick={handleListen}
+            positive={!hasListened}
+            aria-label="Episódio ouvido"
+          >
+            {hasListened ? <ClearRoundedIcon /> : <CheckRoundedIcon />}
+          </EpisodeCardButton>
+        </Tooltip>
+        <Tooltip title="Texto do episódio">
+          <EpisodeCardButton
+            outline
+            positive
+            onClick={onClickUrl(episode.textUrl)}
+            aria-label="Texto do episódio"
+          >
+            Texto
+          </EpisodeCardButton>
+        </Tooltip>
       </div>
     </EpisodeCardContainer>
   )
