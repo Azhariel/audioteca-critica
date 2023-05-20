@@ -6,6 +6,7 @@ export interface Episode {
   title: string
   description: { description: string }
   image: {
+    url: string | undefined
     id: string
     gatsbyImageData: {
       images: {

@@ -5,6 +5,7 @@ import {
   EpisodeCardDescription,
   EpisodeCardTitle,
   EpisodeCardYear,
+  StyledGatsbyImage,
 } from '@/styles'
 import { Episode } from '@/types'
 import storageHandler from '@/utils/storageHandler'
@@ -58,15 +59,10 @@ const EpisodeCard = ({ episode, onListen }: EpisodeCardProps) => {
               height: '510px',
             }}
           >
-            <GatsbyImage
+            <StyledGatsbyImage
               image={episode.image.gatsbyImageData}
               alt={episode.title}
               objectFit="cover"
-              style={{
-                width: '100%',
-                borderRadius: '8px',
-                marginBottom: '8px',
-              }}
             />
           </div>
           <EpisodeCardTitle onClick={onClickUrl(episode.episodeUrl)}>

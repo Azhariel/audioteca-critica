@@ -5,6 +5,7 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import { TextField } from '@mui/material'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const colors = {
   Body: '#fafafa',
@@ -71,6 +72,17 @@ export const StyledButton = styled.button`
   border-radius: 5px;
   margin: 0 0.5rem;
   cursor: pointer;
+`
+
+export const StyledGatsbyImage = styled(GatsbyImage)`
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 8px;
+
+  @media (max-height: 768px) {
+    width: 90%;
+    height: 93%;
+  }
 `
 
 export const NavBar = styled.nav`
