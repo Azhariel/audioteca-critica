@@ -17,12 +17,12 @@ jobs:
           fetch-depth: 0
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.4
+        uses: pnpm/action-setup
         with:
-          version: 7
+          version: latest
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node
         with:
           node-version: lts/*
           cache: 'pnpm'
