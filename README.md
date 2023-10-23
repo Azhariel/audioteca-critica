@@ -26,6 +26,8 @@
 
 Simple episode tracker for <a href="https://orelo.cc/podcast/63596d0765a447074f37f367?forum=false">Audioteca Crítica</a>.
 
+<a href="https://audioteca-critica.vercel.app/" target="_blank" rel="noreferrer">It can be found live here!</a>
+
 Main objective was to study how to create a CMS-enabled SSR application. Used Contentful on Gatsby.
 
 ## Quick Start
