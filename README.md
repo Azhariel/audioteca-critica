@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/images/icon.png">
+  <img src="./static/logo.png" alt="Logo da Audioteca Crítica">
 </p>
 
 <br />
